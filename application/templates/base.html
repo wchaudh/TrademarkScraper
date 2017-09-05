@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>{% block full_title %}{% block title %}{% endblock %} - TM Scraper{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/united/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='app.css') }}"/>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-default navbar-static-top" >
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#base-nav-collapse"><i class="fa fa-bars"></i></button>
+                    <a href="{{ url_for('index') }}" class="navbar-brand"><strong>TM</strong>Scraper</a>
+                </div>
+                <div class="collapse navbar-collapse" id="base-nav-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/index">USPTO</a></li>
+                        <li><a href="">WIPO (UC)</a></li>
+                        <li><a href="">TMVIEW (UC)</a></li>
+                        <li><a href="">Help (UC)</a></li>
+                        <li><a href="">Feedback (UC)</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">{% block content %}{% endblock %}</main>
+
+    <footer class="container"><div class="row"><div class="col-md-12">
+    </div></div></footer>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    {% block script %}{% endblock %}
+
+    {% block analytics %}{% if config['GOOGLE_ANALYTICS_KEY'] %}
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            ga('create', '{{ config['GOOGLE_ANALYTICS_KEY'] }}', 'auto');
+            ga('send', 'pageview');
+        </script>
+    {% endif %}{% endblock %}
+</body>
+</html>

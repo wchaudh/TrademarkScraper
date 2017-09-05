@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+  <h1>Enter TradeMark Number</h1>
+  <h2>USPTO</h2>
+  <h5>Caution: Do not exceed 900 unique TMs </h5>
+  <div class="progress">
+  <div class="progress-bar progress-bar-striped active" role="progressbar"
+  aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+    Under Construction
+  </div> </div>
+  <form action="index" id="textform" method="POST">
+    <textarea name="text" rows="10" cols="200" style="width:auto;" class="form-control" placeholer="Message" required></textarea>
+    <br>
+    <input type="submit" name="index" value="Scrape" style="float:left" class="btn btn-success">
+  </form>
+<br>
+  <h2>Bulk Upload Trademark Registration Numbers</h2>
+  <h4 class='Construction'>(Under Construction)</h4>
+    <form action="index" method=post enctype=multipart/form-data>
+      <p><input type=file name=file>
+         <input type=submit value=Upload>
+    </form>
+    <a href="/index" style="font-size:130%;">Download as CSV</a>
+
+
+    {{ table|safe }}
+
+<p>{{ debug }}</p>
+
+</body>
+{% endblock %}
